@@ -1,0 +1,127 @@
+{
+    "resource": "/hello",
+    "path": "/hello/",
+    "httpMethod": "GET",
+    "headers": {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "Accept-Language": "en-US,en;q=0.9",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "US",
+        "Host": "3bxgkqrk1d.execute-api.us-east-1.amazonaws.com",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36",
+        "Via": "2.0 4f9e9e3e8a2a5cea2848aac8473267f2.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "Mfy9PtA3hqyT6v1K6zDRfuDzrkL803aUGCs_hdRiHRyNdH8D-lxESg==",
+        "X-Amzn-Trace-Id": "Root=1-5ebad2d8-315d6cf839e84614c70a9530",
+        "X-Forwarded-For": "72.21.196.66, 70.132.60.131",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https",
+        "accept-encoding": "gzip, deflate, br",
+        "sec-fetch-dest": "document",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1",
+        "upgrade-insecure-requests": "1"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+        ],
+        "Accept-Language": [
+            "en-US,en;q=0.9"
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "US"
+        ],
+        "Host": [
+            "3bxgkqrk1d.execute-api.us-east-1.amazonaws.com"
+        ],
+        "User-Agent": [
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36"
+        ],
+        "Via": [
+            "2.0 4f9e9e3e8a2a5cea2848aac8473267f2.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "Mfy9PtA3hqyT6v1K6zDRfuDzrkL803aUGCs_hdRiHRyNdH8D-lxESg=="
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-5ebad2d8-315d6cf839e84614c70a9530"
+        ],
+        "X-Forwarded-For": [
+            "72.21.196.66, 70.132.60.131"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ],
+        "accept-encoding": [
+            "gzip, deflate, br"
+        ],
+        "sec-fetch-dest": [
+            "document"
+        ],
+        "sec-fetch-mode": [
+            "navigate"
+        ],
+        "sec-fetch-site": [
+            "none"
+        ],
+        "sec-fetch-user": [
+            "?1"
+        ],
+        "upgrade-insecure-requests": [
+            "1"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "accountId": "233067510481",
+        "resourceId": "rn9gfo",
+        "stage": "Prod",
+        "requestId": "a546731a-b7df-436d-83b3-c340f3733bd3",
+        "identity": {
+            "cognitoIdentityPoolId": "",
+            "accountId": "",
+            "cognitoIdentityId": "",
+            "caller": "",
+            "apiKey": "",
+            "apiKeyId": "",
+            "accessKey": "",
+            "sourceIp": "72.21.196.66",
+            "cognitoAuthenticationType": "",
+            "cognitoAuthenticationProvider": "",
+            "userArn": "",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36",
+            "user": ""
+        },
+        "resourcePath": "/hello",
+        "authorizer": null,
+        "httpMethod": "GET",
+        "apiId": "3bxgkqrk1d"
+    },
+    "body": ""
+}
