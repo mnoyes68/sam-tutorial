@@ -22,37 +22,20 @@ Resources:
       StageName: !Ref AppStage
   UploadS3Bucket:
     Type: AWS::S3::Bucket
-  HelloWorldFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+  ShowFormFunction:
+    Type: AWS::Serverless::Function
     Properties:
-      CodeUri: hello-world/
-      Handler: hello-world
+      CodeUri: user-form/
+      Handler: show-form
       Runtime: go1.x
-      AutoPublishAlias: live
-      DeploymentPreference:
-        #Type: Linear10PercentEvery1Minute
-        Type: AllAtOnce
-        Alarms:
-          - !Ref HelloWorldErrors
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
       Events:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /hello
-            Method: GET
-            RestApiId: !Ref WebApi
-        SubmitForm:
+        ShowForm:
           Type: Api
           Properties:
-            Path: /hello
-            Method: post
+            Path: /
+            Method: get
             RestApiId: !Ref WebApi
-      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
-        Variables:
-          PARAM1: VALUE
-
-  HelloWorldErrors:
+  ShowFormErrors:
     Type: AWS::CloudWatch::Alarm
     Properties:
       MetricName: Errors
@@ -65,18 +48,18 @@ Resources:
       Namespace: "AWS/Lambda"
       Dimensions:
         - Name: FunctionName
-          Value: !Ref HelloWorldFunction
+          Value: !Ref ShowFormFunction
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  HelloWorldAPI:
+  SamFormAPI:
     Description: "API Gateway endpoint URL for Prod environment for First Function"
     Value: !Sub "https://${WebApi}.execute-api.${AWS::Region}.amazonaws.com/${AppStage}/hello/"
-  HelloWorldFunction:
+  ShowFormFunction:
     Description: "First Lambda Function ARN"
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
+    Value: !GetAtt ShowFormFunction.Arn
+  ShowFormFunctionIamRole:
     Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+    Value: !GetAtt ShowFormFunctionRole.Arn

@@ -18,37 +18,23 @@ Resources:
     Properties:
       StageName:
         Ref: AppStage
-  HelloWorldFunction:
+  UploadS3Bucket:
+    Type: AWS::S3::Bucket
+  ShowFormFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://mnoyes-sam-test-app/7e9b63cd051a3505278c1d1ada09b1b7
-      Handler: hello-world
+      CodeUri: s3://mnoyes-sam-test-app/17d4e8f27eaa12a14aecc3825c10ccee
+      Handler: show-form
       Runtime: go1.x
-      AutoPublishAlias: live
-      DeploymentPreference:
-        Type: AllAtOnce
-        Alarms:
-        - Ref: HelloWorldErrors
-      Tracing: Active
       Events:
-        HelloWorld:
+        ShowForm:
           Type: Api
           Properties:
-            Path: /hello
-            Method: GET
+            Path: /
+            Method: get
             RestApiId:
               Ref: WebApi
-        SubmitForm:
-          Type: Api
-          Properties:
-            Path: /hello
-            Method: post
-            RestApiId:
-              Ref: WebApi
-      Environment:
-        Variables:
-          PARAM1: VALUE
-  HelloWorldErrors:
+  ShowFormErrors:
     Type: AWS::CloudWatch::Alarm
     Properties:
       MetricName: Errors
@@ -62,21 +48,21 @@ Resources:
       Dimensions:
       - Name: FunctionName
         Value:
-          Ref: HelloWorldFunction
+          Ref: ShowFormFunction
 Outputs:
-  HelloWorldAPI:
+  SamFormAPI:
     Description: API Gateway endpoint URL for Prod environment for First Function
     Value:
       Fn::Sub: https://${WebApi}.execute-api.${AWS::Region}.amazonaws.com/${AppStage}/hello/
-  HelloWorldFunction:
+  ShowFormFunction:
     Description: First Lambda Function ARN
     Value:
       Fn::GetAtt:
-      - HelloWorldFunction
+      - ShowFormFunction
       - Arn
-  HelloWorldFunctionIamRole:
+  ShowFormFunctionIamRole:
     Description: Implicit IAM Role created for Hello World function
     Value:
       Fn::GetAtt:
-      - HelloWorldFunctionRole
+      - ShowFormFunctionRole
       - Arn
