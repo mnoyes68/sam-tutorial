@@ -34,6 +34,28 @@ Resources:
             Method: get
             RestApiId:
               Ref: WebApi
+  ProcessFormFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://mnoyes-sam-test-app/f6ed91f62516d31c713a014f50e7bd97
+      Handler: process-form
+      Runtime: go1.x
+      Events:
+        SubmitForm:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
+            RestApiId:
+              Ref: WebApi
+      Environment:
+        Variables:
+          UPLOAD_S3_BUCKET:
+            Ref: UploadS3Bucket
+      Policies:
+      - S3FullAccessPolicy:
+          BucketName:
+            Ref: UploadS3Bucket
   ShowFormErrors:
     Type: AWS::CloudWatch::Alarm
     Properties:
@@ -50,10 +72,14 @@ Resources:
         Value:
           Ref: ShowFormFunction
 Outputs:
-  SamFormAPI:
+  UserFormApi:
     Description: API Gateway endpoint URL for Prod environment for First Function
     Value:
-      Fn::Sub: https://${WebApi}.execute-api.${AWS::Region}.amazonaws.com/${AppStage}/hello/
+      Fn::Sub: https://${WebApi}.execute-api.${AWS::Region}.amazonaws.com/${AppStage}/
+  UploadBucket:
+    Description: S3 Bucket for user information
+    Value:
+      Ref: UploadS3Bucket
   ShowFormFunction:
     Description: First Lambda Function ARN
     Value:
